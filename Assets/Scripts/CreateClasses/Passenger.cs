@@ -87,9 +87,11 @@ public class Passenger : MonoBehaviour
 
         if (MoveRight || MoveLeft && anim.GetCurrentAnimatorStateInfo(0).IsName("DefaultState"))
         {
-            anim.Play("Walk");
+            // anim.Play("Walk");
+            anim.Play("Chicken_003_run");
         }
-        anim.SetBool("Walk", MoveRight || MoveLeft);
+        anim.SetBool("Chicken_003_run", MoveRight || MoveLeft);
+        // anim.SetBool("Walk", MoveRight || MoveLeft);
 
         if (MoveRight)
             transform.position += Vector3.right / 20;
