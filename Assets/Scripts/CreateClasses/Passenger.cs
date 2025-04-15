@@ -4,6 +4,7 @@ using UnityEngine;
 public class Passenger : MonoBehaviour
 {
     public int id { get; set; } = 0;
+    public int uniqueID { get; set; } = 0;
 
     [SerializeField]
     private TextMesh text;
@@ -106,15 +107,17 @@ public class Passenger : MonoBehaviour
         {
             case "notElevator":
                 {
+                    // Debug.Log("Not elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (!exit)
                     {
-                        transform.position = transform.parent.Find("Ground").GetChild(0).position;
-                        MoveRight = false;
+                        // transform.position = transform.parent.Find("Ground").GetChild(0).position;
+                        // MoveRight = false;
                     }
                     break;
                 }
             case "elevator":
                 {
+                    // Debug.Log("Elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (!exit)
                     {
                         Enter = true;
@@ -124,6 +127,7 @@ public class Passenger : MonoBehaviour
                 }
             case "floor":
                 {
+                    // Debug.Log("Floor: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (exit)
                     {
                         transform.position = other.transform.Find("Ground").GetChild(0).position;
@@ -133,6 +137,7 @@ public class Passenger : MonoBehaviour
                 }
             case "leftWall":
                 {
+                    // Debug.Log("Left wall: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (exit)
                         DestroyFromFloor();
                     break;
@@ -144,6 +149,7 @@ public class Passenger : MonoBehaviour
 
     private void DestroyFromFloor()
     {
+        Debug.Log("Destroy from floor: " + " " + StartFloor);
         GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor).GetComponent<Queue>().Remove(id);
         Destroy(gameObject);
     }

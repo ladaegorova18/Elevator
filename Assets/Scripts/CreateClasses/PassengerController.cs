@@ -98,9 +98,8 @@ public class PassengerController : MonoBehaviour
 
             //pass = person;
             pass.StartFloor = person.StartFloor;
-            pass.FinishFloor = person.FinishFloor; //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            pass.MoveRight = true; //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            pass.MoveRight = true;
+            pass.FinishFloor = person.FinishFloor;
+            pass.MoveRight = true; 
             pass.PersonID = person.PersonID;
             pass.Limit = 15;
             pass.Size = person.Size;
@@ -187,4 +186,3 @@ public class FatGuysCreator : Creator
 {
     public override Passenger GetPassenger(int floorCount, int personID, int startFloor) => new FatGuy(floorCount, personID, startFloor);
 }
-
