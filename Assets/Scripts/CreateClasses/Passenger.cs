@@ -50,7 +50,7 @@ public class Passenger : MonoBehaviour
         while (FinishFloor == startFloor);
 
         MoveRight = false;
-        MoveRight = false;
+        MoveLeft = false;
     }
 
     private void Start()
@@ -60,7 +60,7 @@ public class Passenger : MonoBehaviour
         text.text = (house.transform.childCount - FinishFloor - 1).ToString();
         anim = GetComponent<Animator>();
         MoveRight = false;
-        MoveRight = false;
+        MoveLeft = false;
         counter = GameObject.FindGameObjectWithTag("counter").GetComponent<Counter>();
         counter.AddPassenger();
         exit = false;

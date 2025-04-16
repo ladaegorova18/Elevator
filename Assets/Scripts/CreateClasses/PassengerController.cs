@@ -32,7 +32,7 @@ public class PassengerController : MonoBehaviour
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
         var passengersOnFloors = new int[floorCount];
-        var list = new List<Passenger>();
+        var list = new List<Person>();
         var peopleCreator = new PeopleCreator();
         var childrenCreator = new ChildrenCreator();
         var fatGuysCreator = new FatGuysCreator();
@@ -53,7 +53,7 @@ public class PassengerController : MonoBehaviour
         this.floorCount = floorCount;
     }
 
-    private List<Passenger> Mix(List<Passenger> list)
+    private List<Person> Mix(List<Person> list)
     {
         var rnd = new System.Random();
         var newList = list;
@@ -66,7 +66,7 @@ public class PassengerController : MonoBehaviour
         return list;
     }
 
-    private IEnumerator Creator(float sec, List<Passenger> list)
+    private IEnumerator Creator(float sec, List<Person> list)
     {
         foreach (var person in list)
         {
@@ -109,7 +109,7 @@ public class PassengerController : MonoBehaviour
     public void AddPass(int floor, GameObject objectPassenger) => 
         transform.GetChild(floor).GetComponent<Queue>().AddPassenger(objectPassenger);
 
-    private Passenger GetPassengerOnFloor(int floorCount, int[] passengersOnFloors, Creator peopleCreator, int personID)
+    private Person GetPassengerOnFloor(int floorCount, int[] passengersOnFloors, Creator peopleCreator, int personID)
     {
         var startFloor = rnd.Next(1, floorCount - 1);
         var person = peopleCreator.GetPassenger(floorCount, personID, startFloor);
@@ -174,15 +174,15 @@ public class PassengerController : MonoBehaviour
 
 public class PeopleCreator : Creator
 {
-    public override Passenger GetPassenger(int floorCount, int personID, int startFloor) => new Person(floorCount, personID, startFloor);
+    public override Person GetPassenger(int floorCount, int personID, int startFloor) => new Person(floorCount, personID, startFloor);
 }
 
 public class ChildrenCreator : Creator
 {
-    public override Passenger GetPassenger(int floorCount, int personID, int startFloor) => new Child(floorCount, personID, startFloor);
+    public override Person GetPassenger(int floorCount, int personID, int startFloor) => new Child(floorCount, personID, startFloor);
 }
 
 public class FatGuysCreator : Creator
 {
-    public override Passenger GetPassenger(int floorCount, int personID, int startFloor) => new FatGuy(floorCount, personID, startFloor);
+    public override Person GetPassenger(int floorCount, int personID, int startFloor) => new FatGuy(floorCount, personID, startFloor);
 }
