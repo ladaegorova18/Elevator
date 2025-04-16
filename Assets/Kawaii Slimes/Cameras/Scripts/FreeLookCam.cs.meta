@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e44af8091779fcb40801d5b284353dbe
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221172
+  packageName: Kawaii Slimes
+  packageVersion: 1.01
+  assetPath: Assets/Kawaii Slimes/Cameras/Scripts/FreeLookCam.cs
+  uploadId: 593187

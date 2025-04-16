@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 58cb183e16853564e9ed457f8a296db1
+labels:
+- Done
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221172
+  packageName: Kawaii Slimes
+  packageVersion: 1.01
+  assetPath: Assets/Kawaii Slimes/Cameras/Scripts/PivotBasedCameraRig.cs
+  uploadId: 593187

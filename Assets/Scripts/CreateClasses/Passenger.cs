@@ -31,6 +31,8 @@ public class Passenger : MonoBehaviour
     private System.Random rnd = new System.Random();
     private Animator anim;
     private Counter counter;
+    
+    public SlimeAnimationState currentState; 
 
     private void Start()
     {
@@ -66,10 +68,11 @@ public class Passenger : MonoBehaviour
 
         if (MoveRight || MoveLeft && anim.GetCurrentAnimatorStateInfo(0).IsName("DefaultState"))
         {
+            anim.SetTrigger("Walk");
             // anim.Play("Walk");
-            anim.Play("Chicken_003_run");
+            // anim.Play("Chicken_003_run");
         }
-        anim.SetBool("Chicken_003_run", MoveRight || MoveLeft);
+        anim.SetTrigger("Walk");
         // anim.SetBool("Walk", MoveRight || MoveLeft);
 
         if (MoveRight)
@@ -88,7 +91,7 @@ public class Passenger : MonoBehaviour
         {
             case "notElevator":
                 {
-                    // Debug.Log("Not elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
+                    Debug.Log("Not elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (!exit)
                     {
                         // transform.position = transform.parent.Find("Ground").GetChild(0).position;
@@ -130,7 +133,7 @@ public class Passenger : MonoBehaviour
 
     private void DestroyFromFloor()
     {
-        Debug.Log("Destroy from floor: " + " " + StartFloor);
+        // Debug.Log("Destroy from floor: " + " " + StartFloor);
         GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor).GetComponent<Queue>().Remove(id);
         Destroy(gameObject);
     }

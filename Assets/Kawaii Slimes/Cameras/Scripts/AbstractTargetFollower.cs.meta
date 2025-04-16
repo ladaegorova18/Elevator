@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 89a534d869bfccd49bebf7cb6fb244b6
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221172
+  packageName: Kawaii Slimes
+  packageVersion: 1.01
+  assetPath: Assets/Kawaii Slimes/Cameras/Scripts/AbstractTargetFollower.cs
+  uploadId: 593187

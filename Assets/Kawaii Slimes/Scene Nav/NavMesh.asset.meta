@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 29f8dd02c61f063428527e656b4737cb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 23800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221172
+  packageName: Kawaii Slimes
+  packageVersion: 1.01
+  assetPath: Assets/Kawaii Slimes/Scene Nav/NavMesh.asset
+  uploadId: 593187

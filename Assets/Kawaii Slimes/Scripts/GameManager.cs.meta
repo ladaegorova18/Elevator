@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 885a1ff9f735e1b4a997a5ba62dfb878
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221172
+  packageName: Kawaii Slimes
+  packageVersion: 1.01
+  assetPath: Assets/Kawaii Slimes/Scripts/GameManager.cs
+  uploadId: 593187

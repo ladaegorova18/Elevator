@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b44df2b6f4e59c04cbaf9f1fc154fc3f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221172
+  packageName: Kawaii Slimes
+  packageVersion: 1.01
+  assetPath: Assets/Kawaii Slimes/Animation/EventAnimation/Rig_Damage_02.anim
+  uploadId: 593187
