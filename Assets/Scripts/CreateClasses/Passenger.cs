@@ -11,6 +11,8 @@ public class Passenger : MonoBehaviour
 
     [SerializeField]
     private TextMesh timer;
+    
+    private Animator anim;
 
     [SerializeField]
     public int StartFloor { get; set; }
@@ -29,7 +31,6 @@ public class Passenger : MonoBehaviour
     public bool Enter { get; set; }
     private bool exit;
     private System.Random rnd = new System.Random();
-    private Animator anim;
     private Counter counter;
     
     public SlimeAnimationState currentState; 
@@ -66,14 +67,9 @@ public class Passenger : MonoBehaviour
         else
             timer.text = "";
 
-        if (MoveRight || MoveLeft && anim.GetCurrentAnimatorStateInfo(0).IsName("DefaultState"))
-        {
-            anim.SetTrigger("Walk");
-            // anim.Play("Walk");
-            // anim.Play("Chicken_003_run");
-        }
-        anim.SetTrigger("Walk");
-        // anim.SetBool("Walk", MoveRight || MoveLeft);
+        // anim.GetCurrentAnimatorStateInfo(0).IsName("DefaultState")
+        anim.SetBool("Jump", MoveRight || MoveLeft);
+        anim.SetBool("Idle", !(MoveRight || MoveLeft));
 
         if (MoveRight)
             transform.position += Vector3.right / 20;
