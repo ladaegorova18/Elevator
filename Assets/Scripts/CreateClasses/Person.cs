@@ -7,18 +7,20 @@ public class Person
     public int StartFloor { get; set; }
 
     public int FinishFloor { get; set; }
-    public bool MoveRight { get; set; }
-    public bool MoveLeft { get; set; }
 
     public int Size { get; set; } = 2;
     
     public int PersonID { get; set; }
     private System.Random rnd = new System.Random();
 
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="floorCount"> Число этажей </param>
+    /// <param name="personID"> Уникальный ID </param>
     public Person(int floorCount, int personID, int startFloor)
     {
         this.StartFloor = startFloor;
-        //startFloor = rnd.Next(1, floorCount - 1);
         this.PersonID = personID;
 
         do
@@ -26,9 +28,6 @@ public class Person
             FinishFloor = rnd.Next(1, floorCount - 1);
         }
         while (FinishFloor == startFloor);
-
-        MoveRight = false;
-        MoveLeft = false;
     }
 }
 

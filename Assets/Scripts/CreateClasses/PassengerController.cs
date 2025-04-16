@@ -96,7 +96,6 @@ public class PassengerController : MonoBehaviour
 
             var pass = objectPassenger.GetComponent<Passenger>();
 
-            //pass = person;
             pass.StartFloor = person.StartFloor;
             pass.FinishFloor = person.FinishFloor;
             pass.MoveRight = true; 

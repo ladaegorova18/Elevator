@@ -32,27 +32,6 @@ public class Passenger : MonoBehaviour
     private Animator anim;
     private Counter counter;
 
-    /// <summary>
-    /// Конструктор
-    /// </summary>
-    /// <param name="floorCount"> Число этажей </param>
-    /// <param name="personID"> Уникальный ID </param>
-    public Passenger(int floorCount, int personID, int startFloor)
-    {
-        this.StartFloor = startFloor;
-        //startFloor = rnd.Next(1, floorCount - 1);
-        this.PersonID = personID;
-
-        do
-        {
-            FinishFloor = rnd.Next(1, floorCount - 1);
-        }
-        while (FinishFloor == startFloor);
-
-        MoveRight = false;
-        MoveLeft = false;
-    }
-
     private void Start()
     {
         var house = GameObject.FindGameObjectWithTag("house");
