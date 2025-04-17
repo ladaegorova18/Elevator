@@ -512,10 +512,10 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: d773d4ec73be2c348a2840d8261f2c2f, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293388263
 --- !u!23 &982834176
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -539,7 +539,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: d773d4ec73be2c348a2840d8261f2c2f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -967,6 +967,8 @@ MonoBehaviour:
   - {fileID: 6284928261371208594, guid: adeddc7e6ffc67344b1623b144807811, type: 3}
   - {fileID: 6284928261371208594, guid: e91b6eb336fa6474186eac056eab0e8e, type: 3}
   - {fileID: 6284928261371208594, guid: e20d855977bfac44a8709d3a9acc5002, type: 3}
+  _groundObject: {fileID: 6284928261371208594, guid: e4d0b24cc38d5fa428e25cddcc25b74b,
+    type: 3}
   count: 8
   border: {fileID: 8551218223115956499, guid: cfe0bc0722d4a6c4383eb4b6f4632f72, type: 3}
 --- !u!114 &1868241783
@@ -1287,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: 3615825605343114820, guid: 88a83a3c0df1e9f47b789799fea51aa6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 294
+      value: 286
       objectReference: {fileID: 0}
     - target: {fileID: 3615825605343114820, guid: 88a83a3c0df1e9f47b789799fea51aa6,
         type: 3}

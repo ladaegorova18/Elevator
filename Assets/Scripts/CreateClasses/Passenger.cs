@@ -135,6 +135,21 @@ public class Passenger : MonoBehaviour
     private void DestroyFromFloor()
     {
         // Debug.Log("Destroy from floor: " + " " + StartFloor);
+        if (GameObject.FindGameObjectWithTag("house") == null)
+        {
+            Debug.Log("House is null: " + StartFloor);
+            return;
+        }
+        else if (GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor) == null)
+        {
+            Debug.Log("House child is null: " + StartFloor);
+            return;
+        }
+        else if (GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor).GetComponent<Queue>() == null)
+        {
+            Debug.Log("Queue is null: " + StartFloor);
+            return;
+        }
         GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor).GetComponent<Queue>().Remove(id);
         Destroy(gameObject);
     }
