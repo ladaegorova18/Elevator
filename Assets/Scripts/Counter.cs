@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    private TextMesh counter;
+    private Text counter;
 
     private int entered;
     private int lose;
@@ -11,7 +12,7 @@ public class Counter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        counter = GetComponent<TextMesh>();
+        counter = GetComponent<Text>();
         passengersCount = GameObject.FindGameObjectWithTag("house").GetComponent<PassengerController>().passengersCount;
         entered = 0;
         lose = 0;
