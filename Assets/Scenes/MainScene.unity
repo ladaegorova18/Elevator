@@ -963,10 +963,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floors:
-  - {fileID: 7792614660427906374, guid: e67a07295d62a9e49ba51c5e92a70dea, type: 3}
-  - {fileID: 5288296314639518698, guid: 1eb946e8edfc71e41b1ebfdf90f16ce6, type: 3}
-  - {fileID: 3166766590372884046, guid: 4d53509d740abaf4e9efe82679fc83ad, type: 3}
   - {fileID: 6284928261371208594, guid: f65fe4dcc5ae668459f6f77120c2af42, type: 3}
+  - {fileID: 6284928261371208594, guid: adeddc7e6ffc67344b1623b144807811, type: 3}
+  - {fileID: 6284928261371208594, guid: e91b6eb336fa6474186eac056eab0e8e, type: 3}
+  - {fileID: 6284928261371208594, guid: e20d855977bfac44a8709d3a9acc5002, type: 3}
   count: 8
   border: {fileID: 8551218223115956499, guid: cfe0bc0722d4a6c4383eb4b6f4632f72, type: 3}
 --- !u!114 &1868241783
@@ -1287,7 +1287,7 @@ PrefabInstance:
     - target: {fileID: 3615825605343114820, guid: 88a83a3c0df1e9f47b789799fea51aa6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 384
+      value: 294
       objectReference: {fileID: 0}
     - target: {fileID: 3615825605343114820, guid: 88a83a3c0df1e9f47b789799fea51aa6,
         type: 3}
@@ -1338,12 +1338,12 @@ PrefabInstance:
         type: 3}
       propertyPath: openSlot
       value: 
-      objectReference: {fileID: 2100000, guid: dfeaeb4277f8231449f41fc71bf91003, type: 2}
+      objectReference: {fileID: 2100000, guid: aba5ce7e69ab25e49b74576ad055aa7b, type: 2}
     - target: {fileID: 3615825605343114831, guid: 88a83a3c0df1e9f47b789799fea51aa6,
         type: 3}
       propertyPath: closedSlot
       value: 
-      objectReference: {fileID: 2100000, guid: 19faede41aeee8244be490f3c77390b6, type: 2}
+      objectReference: {fileID: 2100000, guid: ea47cc13f6260ef4893f8dbfad0b1885, type: 2}
     - target: {fileID: 4190313243083785771, guid: 88a83a3c0df1e9f47b789799fea51aa6,
         type: 3}
       propertyPath: m_LocalScale.z

@@ -20,6 +20,7 @@ public class CreateHouse : MonoBehaviour
         Instantiate(border, this.transform);
         for (var floorNumber = count; floorNumber > 0; --floorNumber)
         {
+            // var newFloor = _floors[3]; 
             var newFloor = _floors[Random.Range(0, _floors.Count)]; 
             var floor = Instantiate(newFloor, this.transform);
             floor.GetComponentInChildren<Text>().text = floorNumber.ToString();
