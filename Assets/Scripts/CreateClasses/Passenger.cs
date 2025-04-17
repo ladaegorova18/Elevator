@@ -12,6 +12,7 @@ public class Passenger : MonoBehaviour
     [SerializeField]
     private TextMesh timer;
     
+    [SerializeField]
     private Animator anim;
 
     [SerializeField]
@@ -40,7 +41,7 @@ public class Passenger : MonoBehaviour
         var house = GameObject.FindGameObjectWithTag("house");
         text = transform.Find("Number").GetComponent<TextMesh>();
         text.text = (house.transform.childCount - FinishFloor - 1).ToString();
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
         MoveRight = false;
         MoveLeft = false;
         counter = GameObject.FindGameObjectWithTag("counter").GetComponent<Counter>();
@@ -67,15 +68,19 @@ public class Passenger : MonoBehaviour
         else
             timer.text = "";
 
-        // anim.GetCurrentAnimatorStateInfo(0).IsName("DefaultState")
-        anim.SetBool("Jump", MoveRight || MoveLeft);
-        anim.SetBool("Idle", !(MoveRight || MoveLeft));
+        var isMoving = MoveRight || MoveLeft;
+        var jump = anim.GetBool("Walk");
 
-        if (MoveRight)
-            transform.position += Vector3.right / 20;
-
-        if (MoveLeft)
-            transform.position += Vector3.left / 20;
+        if (isMoving && !jump)
+        {
+            anim.SetFloat("Speed", 1.0f);
+            anim.SetBool("Idle", false);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0.0f);
+            anim.SetBool("Idle", true);
+        }
     }
 
     /// <summary>
@@ -87,7 +92,7 @@ public class Passenger : MonoBehaviour
         {
             case "notElevator":
                 {
-                    Debug.Log("Not elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
+                    // Debug.Log("Not elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (!exit)
                     {
                         // transform.position = transform.parent.Find("Ground").GetChild(0).position;
@@ -97,7 +102,7 @@ public class Passenger : MonoBehaviour
                 }
             case "elevator":
                 {
-                    // Debug.Log("Elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
+                    Debug.Log("Elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (!exit)
                     {
                         Enter = true;
@@ -107,7 +112,7 @@ public class Passenger : MonoBehaviour
                 }
             case "floor":
                 {
-                    // Debug.Log("Floor: " + other.transform.GetSiblingIndex() + " " + StartFloor);
+                    Debug.Log("Floor: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (exit)
                     {
                         transform.position = other.transform.Find("Ground").GetChild(0).position;
@@ -117,7 +122,7 @@ public class Passenger : MonoBehaviour
                 }
             case "leftWall":
                 {
-                    // Debug.Log("Left wall: " + other.transform.GetSiblingIndex() + " " + StartFloor);
+                    Debug.Log("Left wall: " + other.transform.GetSiblingIndex() + " " + StartFloor);
                     if (exit)
                         DestroyFromFloor();
                     break;
@@ -148,9 +153,21 @@ public class Passenger : MonoBehaviour
     /// </summary>
     public void ElevatorExit()
     {
-        Rotate();
+        // Rotate();
         MoveLeft = true;
         exit = true;
+    }
+
+    void OnAnimatorMove()
+    {
+        // apply root motion to AI
+        var position = anim.rootPosition;
+
+        if (MoveRight)
+            transform.position += Vector3.right / 20;
+
+        if (MoveLeft)
+            transform.position += Vector3.left / 20;
     }
 
     private void Rotate() => transform.Rotate(0, 180, 0);

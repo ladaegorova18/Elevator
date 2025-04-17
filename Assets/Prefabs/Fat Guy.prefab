@@ -503,7 +503,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
   m_Controller: {fileID: 9100000, guid: 707b944f06051734793367fc0c69bc07, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -528,6 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 335359436372160184}
   timer: {fileID: 335359436186934339}
+  anim: {fileID: 8351758640652848485}
   Limit: 0
   currentState: 0
 --- !u!54 &6338738248521253525
@@ -635,7 +636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8847028690262325425}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.0125, z: -0.037193753}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -643,4 +644,4 @@ Transform:
   - {fileID: 457449557144960044}
   - {fileID: 8466745082301033764}
   m_Father: {fileID: 8351758640645890729}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

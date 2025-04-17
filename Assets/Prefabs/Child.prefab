@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526664889234860992}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.02, z: -0.05951}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 2754611784493692343}
   - {fileID: 597947349336592507}
   m_Father: {fileID: 7852556589027944954}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1863768182792387823
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eb340672e17c0af4089e561b61cdc548, type: 3}
   m_Controller: {fileID: 9100000, guid: 707b944f06051734793367fc0c69bc07, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -562,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1997879725524985323}
   timer: {fileID: 1997879725311776528}
+  anim: {fileID: 7852556589020939830}
   Limit: 0
   currentState: 0
 --- !u!54 &5253785954260093382
