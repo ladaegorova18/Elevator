@@ -112,7 +112,7 @@ public class PassengerController : MonoBehaviour
     private Person GetPassengerOnFloor(int floorCount, int[] passengersOnFloors, Creator peopleCreator, int personID)
     {
         Debug.Log("FloorCount: " + floorCount);
-        var startFloor = rnd.Next(2, floorCount - 1);
+        var startFloor = rnd.Next(1, floorCount - 1);
         var person = peopleCreator.GetPassenger(floorCount, personID, startFloor);
 
         Debug.Log(" passengersOnFloors: " + passengersOnFloors.Length + " StartFloor: " + person.StartFloor);

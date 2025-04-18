@@ -23,7 +23,6 @@ public class CreateHouse : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(border, this.transform);
         Instantiate(_roofObject, this.transform);
         for (var floorNumber = count; floorNumber > 0; --floorNumber)
         {

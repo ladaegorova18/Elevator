@@ -27,7 +27,7 @@ public class Person
 
         do
         {
-            FinishFloor = rnd.Next(2, floorCount - 1);
+            FinishFloor = rnd.Next(1, floorCount - 1);
         }
         while (FinishFloor == startFloor);
         Debug.Log("FinishFloor: " + FinishFloor + " StartFloor: " + StartFloor);
