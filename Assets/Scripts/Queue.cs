@@ -5,7 +5,7 @@ public class Queue : MonoBehaviour
 {
     private List<Transform> slots;
     private List<GameObject> passengers;
-    private int limit = 2; // проставить ссылку
+    private int limit = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +55,7 @@ public class Queue : MonoBehaviour
             passengers[i].transform.position = slots[index].transform.position;
             ++index;
             if (index > limit)
-                index = 0; ///костыыыыль
+                index = 0;
         }
     }
 

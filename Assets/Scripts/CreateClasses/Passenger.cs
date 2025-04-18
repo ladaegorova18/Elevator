@@ -21,6 +21,8 @@ public class Passenger : MonoBehaviour
 
     public int FinishFloor { get; set; }
 
+    public int FloorCount { get; set; } = 0;
+
     public int PersonID { get; set; }
 
     public bool MoveRight { get; set; } = false;
@@ -90,16 +92,6 @@ public class Passenger : MonoBehaviour
     {
         switch (other.tag)
         {
-            case "notElevator":
-                {
-                    // Debug.Log("Not elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);
-                    if (!exit)
-                    {
-                        // transform.position = transform.parent.Find("Ground").GetChild(0).position;
-                        // MoveRight = false;
-                    }
-                    break;
-                }
             case "elevator":
                 {
                     Debug.Log("Elevator: " + other.transform.GetSiblingIndex() + " " + StartFloor);

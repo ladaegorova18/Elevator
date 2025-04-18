@@ -1065,6 +1065,8 @@ MonoBehaviour:
   - {fileID: 6284928261371208594, guid: e20d855977bfac44a8709d3a9acc5002, type: 3}
   _groundObject: {fileID: 6284928261371208594, guid: e4d0b24cc38d5fa428e25cddcc25b74b,
     type: 3}
+  _roofObject: {fileID: 6284928261371208594, guid: eb33964a97977674a9f23eafc4d76b98,
+    type: 3}
   count: 8
   border: {fileID: 8551218223115956499, guid: cfe0bc0722d4a6c4383eb4b6f4632f72, type: 3}
 --- !u!114 &1868241783

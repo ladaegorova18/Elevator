@@ -101,7 +101,7 @@ public class Elevator : MonoBehaviour
             {
                 passengers[passNumber].transform.position = GetPosition(passNumber, ref index);
                 if (index > limit)
-                    index = 0; ///костыыыыль
+                    index = 0;
             }
             catch (MissingReferenceException)
             {

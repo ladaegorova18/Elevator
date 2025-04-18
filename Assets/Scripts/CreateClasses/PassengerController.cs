@@ -98,6 +98,7 @@ public class PassengerController : MonoBehaviour
 
             pass.StartFloor = person.StartFloor;
             pass.FinishFloor = person.FinishFloor;
+            pass.FloorCount = floorCount;
             pass.MoveRight = true; 
             pass.PersonID = person.PersonID;
             pass.Limit = 15;
@@ -110,9 +111,11 @@ public class PassengerController : MonoBehaviour
 
     private Person GetPassengerOnFloor(int floorCount, int[] passengersOnFloors, Creator peopleCreator, int personID)
     {
-        var startFloor = rnd.Next(1, floorCount - 1);
+        Debug.Log("FloorCount: " + floorCount);
+        var startFloor = rnd.Next(2, floorCount - 1);
         var person = peopleCreator.GetPassenger(floorCount, personID, startFloor);
 
+        Debug.Log(" passengersOnFloors: " + passengersOnFloors.Length + " StartFloor: " + person.StartFloor);
         var limit = passengersOnFloors[person.StartFloor];
 
         //while (limit < limitOnFloor)

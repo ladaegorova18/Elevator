@@ -12,7 +12,10 @@ public class CreateHouse : MonoBehaviour
     private GameObject _groundObject;
 
     [SerializeField]
-    private int count = 4;
+    private GameObject _roofObject;
+
+    [SerializeField]
+    private int count = 8;
 
     [SerializeField]
     private GameObject border;
@@ -21,7 +24,7 @@ public class CreateHouse : MonoBehaviour
     private void Start()
     {
         Instantiate(border, this.transform);
-        // Instantiate(_groundObject, this.transform);
+        Instantiate(_roofObject, this.transform);
         for (var floorNumber = count; floorNumber > 0; --floorNumber)
         {
             // var newFloor = _floors[3]; 
