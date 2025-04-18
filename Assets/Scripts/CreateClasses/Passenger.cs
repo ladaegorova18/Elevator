@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Passenger : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Passenger : MonoBehaviour
     private TextMesh text;
 
     [SerializeField]
-    private TextMesh timer;
+    private Image timerImage;
     
     [SerializeField]
     private Animator anim;
@@ -22,14 +23,14 @@ public class Passenger : MonoBehaviour
 
     public int PersonID { get; set; }
 
-    public bool MoveRight { get; set; }
-    public bool MoveLeft { get; set; }
+    public bool MoveRight { get; set; } = false;
+    public bool MoveLeft { get; set; } = false;
 
     public float Limit = 15;
 
     public int Size { get; set; } = 2;
 
-    public bool Enter { get; set; }
+    public bool Enter { get; set; } = false;
     private bool exit;
     private System.Random rnd = new System.Random();
     private Counter counter;
@@ -41,7 +42,6 @@ public class Passenger : MonoBehaviour
         var house = GameObject.FindGameObjectWithTag("house");
         text = transform.Find("Number").GetComponent<TextMesh>();
         text.text = (house.transform.childCount - FinishFloor - 1).ToString();
-        // anim = GetComponent<Animator>();
         MoveRight = false;
         MoveLeft = false;
         counter = GameObject.FindGameObjectWithTag("counter").GetComponent<Counter>();
@@ -58,7 +58,7 @@ public class Passenger : MonoBehaviour
         if (!Enter)
         {
             Limit -= Time.deltaTime;
-            timer.text = System.Math.Round(Limit, 2).ToString();
+            UpdateTimerImage();
             if (Limit < 0.1f)
             {
                 DestroyFromFloor();
@@ -66,7 +66,7 @@ public class Passenger : MonoBehaviour
             }
         }
         else
-            timer.text = "";
+            timerImage.fillAmount = 0.0f;
 
         var isMoving = MoveRight || MoveLeft;
         var jump = anim.GetBool("Walk");
@@ -186,4 +186,29 @@ public class Passenger : MonoBehaviour
     }
 
     private void Rotate() => transform.Rotate(0, 180, 0);
+
+    private void UpdateTimerImage()
+    {
+        timerImage.fillAmount = Limit / 15.0f;
+        if (Limit < 0.1f)
+        {
+            timerImage.fillAmount = 0.0f;
+            timerImage.color = Color.red;
+        }
+        else if (Limit < 5.0f && Limit > 0.1f)
+        {
+            timerImage.fillAmount = Limit / 15.0f;
+            timerImage.color = Color.red;
+        }
+        else if (Limit < 10.0f && Limit > 5.0f)
+        {
+            timerImage.fillAmount = Limit / 15.0f;
+            timerImage.color = Color.yellow;
+        }
+        else if (Limit > 10.0f)
+        {
+            timerImage.fillAmount = Limit / 15.0f;
+            timerImage.color = Color.green;
+        }
+    }
 }
