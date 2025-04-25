@@ -21,10 +21,17 @@ public class CreateHouse : MonoBehaviour
     private void Start()
     {
         Instantiate(_roofObject, this.transform);
+        var lastFloorIdx = 0;
         for (var floorNumber = count; floorNumber > 0; --floorNumber)
         {
-            // var newFloor = _floors[3]; 
-            var newFloor = _floors[Random.Range(0, _floors.Count)]; 
+            var newFloorIdx = Random.Range(0, _floors.Count); 
+            while (newFloorIdx == lastFloorIdx)
+            {
+                newFloorIdx = Random.Range(0, _floors.Count); 
+            }
+            var newFloor = _floors[newFloorIdx];
+            lastFloorIdx = newFloorIdx; 
+
             var floor = Instantiate(newFloor, this.transform);
             floor.GetComponentInChildren<Text>().text = floorNumber.ToString();
         }

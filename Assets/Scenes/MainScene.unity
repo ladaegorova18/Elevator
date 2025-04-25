@@ -1348,9 +1348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _floors:
   - {fileID: 6284928261371208594, guid: f65fe4dcc5ae668459f6f77120c2af42, type: 3}
-  - {fileID: 6284928261371208594, guid: f65fe4dcc5ae668459f6f77120c2af42, type: 3}
-  - {fileID: 6284928261371208594, guid: f65fe4dcc5ae668459f6f77120c2af42, type: 3}
-  - {fileID: 6284928261371208594, guid: f65fe4dcc5ae668459f6f77120c2af42, type: 3}
+  - {fileID: 6284928261371208594, guid: adeddc7e6ffc67344b1623b144807811, type: 3}
+  - {fileID: 6284928261371208594, guid: e91b6eb336fa6474186eac056eab0e8e, type: 3}
+  - {fileID: 6284928261371208594, guid: e20d855977bfac44a8709d3a9acc5002, type: 3}
   _groundObject: {fileID: 8551218223115956499, guid: 4160552f7a703f843b93e52070ef3a91,
     type: 3}
   _roofObject: {fileID: 8551218223115956499, guid: cfe0bc0722d4a6c4383eb4b6f4632f72,
