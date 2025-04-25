@@ -502,7 +502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1695158436}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
         m_MethodName: OnExitButtonClicked
         m_Mode: 1
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1695158436}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
         m_MethodName: OnStartButtonClicked
         m_Mode: 1
@@ -844,23 +844,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6105565677168850758, guid: a9453f4020055644196493885066dfaa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9453f4020055644196493885066dfaa, type: 3}
---- !u!114 &1695158436 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6105565677168850758, guid: a9453f4020055644196493885066dfaa,
-    type: 3}
-  m_PrefabInstance: {fileID: 1695158435}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274a7e1319da72a4cbba7594f7480051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1821408728
 GameObject:
   m_ObjectHideFlags: 0
