@@ -17,9 +17,6 @@ public class CreateHouse : MonoBehaviour
     [SerializeField]
     private int count = 8;
 
-    [SerializeField]
-    private GameObject border;
-
 
     private void Start()
     {
@@ -31,8 +28,7 @@ public class CreateHouse : MonoBehaviour
             var floor = Instantiate(newFloor, this.transform);
             floor.GetComponentInChildren<Text>().text = floorNumber.ToString();
         }
-        // Instantiate(_groundObject, this.transform);
-        Instantiate(border, this.transform);
+        Instantiate(_groundObject, this.transform);
 
         GetComponent<PassengerController>().Passengers(count);
     }
