@@ -5,8 +5,6 @@ public class StartScreen : MonoBehaviour
 {
     public void OnStartButtonClicked()
     {
-        // startScreen.SetActive(false);
-        // gameScreen.SetActive(true);
         SceneManager.LoadScene("MainScene");
     }
 
@@ -14,5 +12,17 @@ public class StartScreen : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Game is exiting...");
+    }
+
+    public void OnRestartButtonClicked()
+    {
+        GameObject.FindGameObjectWithTag("house").GetComponent<PassengerController>().Restart();
+        GameObject.FindGameObjectWithTag("elevator").GetComponent<Elevator>().Clear();
+        GameObject.FindGameObjectWithTag("counter").GetComponent<Counter>().Clear();
+    }
+
+    public void OnBackButtonClicked()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 }
