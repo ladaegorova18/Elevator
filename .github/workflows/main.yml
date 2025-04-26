@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - ${{ github.workspace }}/Elevator
+          - .
         testMode:
           - playmode
           - editmode
