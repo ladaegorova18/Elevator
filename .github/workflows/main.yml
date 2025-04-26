@@ -25,6 +25,9 @@ jobs:
           key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
+      - name: Ensure Unity packages are installed
+        run: |
+          /opt/Unity/Editor/Unity -batchmode -quit -projectPath ${{ matrix.projectPath }} -executeMethod UnityEditor.PackageManager.Client.Resolve
       - uses: game-ci/unity-test-runner@v4
         id: tests
         env:
