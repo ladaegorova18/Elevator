@@ -23,6 +23,7 @@ jobs:
         with:
           unityVersion: '6000.0.035f1'  # Unity version (adjust as needed)
           targetPlatform: StandaloneLinux64  # You can change to 'StandaloneOSX', 'StandaloneWindows64', etc.
+          license: ${{ secrets.UNITY_LICENSE }}
 
       - name: Set up Unity License
         run: |
