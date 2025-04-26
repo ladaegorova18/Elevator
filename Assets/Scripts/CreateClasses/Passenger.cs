@@ -36,8 +36,6 @@ public class Passenger : MonoBehaviour
     private bool exit;
     private System.Random rnd = new System.Random();
     private Counter counter;
-    
-    public SlimeAnimationState currentState; 
 
     private void Start()
     {
