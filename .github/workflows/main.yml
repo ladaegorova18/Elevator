@@ -25,6 +25,11 @@ jobs:
           key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
+      - name: Set up Unity
+        uses: game-ci/unity-actions/setup@v2  # This will install Unity automatically
+        with:
+          version: '2021.3.10f1'  # Replace with your Unity version
+          unityLicense: ${{ secrets.UNITY_LICENSE }}
       - name: Ensure Unity packages are installed
         run: |
           /opt/Unity/Editor/Unity -batchmode -quit -projectPath ${{ matrix.projectPath }} -executeMethod UnityEditor.PackageManager.Client.Resolve
