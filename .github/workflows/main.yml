@@ -19,9 +19,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Unity
-        uses: game-ci/unity-action@v3
+        uses: game-ci/unity-builder@v4
         with:
-          version: '6000.0.035f1'  # Unity version (adjust as needed)
+          unityVersion: '6000.0.035f1'  # Unity version (adjust as needed)
           targetPlatform: StandaloneLinux64  # You can change to 'StandaloneOSX', 'StandaloneWindows64', etc.
 
       - name: Set up Unity License
