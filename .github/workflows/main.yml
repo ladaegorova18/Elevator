@@ -25,6 +25,11 @@ jobs:
           key: Library-${{ matrix.projectPath }}
           restore-keys: |
             Library-
+      - name: Setup Unity
+        uses: game-ci/unity-action@v2
+        with:
+          unityVersion: 6000.0.035f1  # Change to your Unity version
+          
       - name: Restore packages
         run: |
           unity-editor -batchmode -nographics -silent-crashes -logFile /dev/null -projectPath ${{ github.workspace }} -executeMethod UnityEditor.PackageManager.Client.Resolve
