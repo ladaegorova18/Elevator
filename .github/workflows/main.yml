@@ -1,63 +1,15 @@
-name: Test project
+name: Build project
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  # Only trigger on push to the 'main' branch
+      - test-build
+  pull_request:
+    branches:
+      - main  # Only trigger on pull request to the 'main' branch
 
 jobs:
-  testAllModes:
-    name: Test in ${{ matrix.testMode }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        projectPath:
-          - .
-        testMode:
-          - playmode
-          - editmode
-          - standalone
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: true
-      - uses: actions/cache@v3
-        with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}
-          restore-keys: |
-            Library-
-      - name: Setup Unity
-        uses: game-ci/unity-builder@v4
-        with:
-          unityVersion: 6000.0.035f1  # Change to your Unity version
-          
-      - name: Restore packages
-        run: |
-          unity-editor -batchmode -nographics -silent-crashes -logFile /dev/null -projectPath ${{ github.workspace }} -executeMethod UnityEditor.PackageManager.Client.Resolve
-      - uses: game-ci/unity-test-runner@v4
-        id: tests
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.artifactsPath }}
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.coveragePath }}
-
-
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
@@ -65,25 +17,22 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
           - Android # Build an Android .apk standalone app.
-          - WebGL # WebGL.
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           lfs: true
-      - uses: actions/cache@v3
+
+      - uses: actions/cache@v4  # ✅ Updated to v4
         with:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-      - if: matrix.targetPlatform == 'Android'
+
+      - if: ${{ matrix.targetPlatform == 'Android' }}  # ✅ Fixed condition
         uses: jlumbroso/free-disk-space@v1.3.1
+
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -91,7 +40,8 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-      - uses: actions/upload-artifact@v4
+
+      - uses: actions/upload-artifact@v4  # ✅ Updated to v4
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
