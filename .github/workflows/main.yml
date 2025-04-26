@@ -1,51 +1,47 @@
-name: Test
+name: Build project
 
 on:
-  pull_request: {}
-  push: { branches: [main, test-build] }
-
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  push:
+    branches:
+      - main  # Only trigger on push to the 'main' branch
+      - test-build
+  pull_request:
+    branches:
+      - main  # Only trigger on pull request to the 'main' branch
 
 jobs:
-  testRunner:
-    name: Test all modes 📝
+  buildForAllSupportedPlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - Android # Build an Android .apk standalone app.
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
+      - uses: actions/checkout@v4
         with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          fetch-depth: 0
+          lfs: true
 
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-
-      - name: Restore Library cache
-        uses: actions/cache@v3
+      - uses: actions/cache@v4  # ✅ Updated to v4
         with:
           path: Library
-          key: Library-test-project
-          restore-keys: |
-            Library-test-project-
-            Library-
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
 
-      - uses: webbertakken/unity-test-runner@v2
-        id: testRunner
-        with:
-          testMode: all
+      - if: ${{ matrix.targetPlatform == 'Android' }}  # ✅ Fixed condition
+        uses: jlumbroso/free-disk-space@v1.3.1
 
-      - uses: actions/upload-artifact@v4
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          name: Test results (all modes)
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+
+      - uses: actions/upload-artifact@v4  # ✅ Updated to v4
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
