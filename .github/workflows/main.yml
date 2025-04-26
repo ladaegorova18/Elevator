@@ -26,7 +26,7 @@ jobs:
           restore-keys: |
             Library-
       - name: Setup Unity
-        uses: game-ci/unity-action@v3
+        uses: game-ci/unity-builder@v4
         with:
           unityVersion: 6000.0.035f1  # Change to your Unity version
           
