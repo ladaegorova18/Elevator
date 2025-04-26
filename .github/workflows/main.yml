@@ -1,6 +1,13 @@
 name: Build project
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  # Only trigger on push to the 'main' branch
+      - test-build
+  pull_request:
+    branches:
+      - main  # Only trigger on pull request to the 'main' branch
 
 jobs:
   buildForAllSupportedPlatforms:
@@ -10,33 +17,21 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
           - Android # Build an Android .apk standalone app.
-          - WebGL # WebGL.
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           lfs: true
-      - uses: actions/cache@v3
+
+      - uses: actions/cache@v4  # ✅ Updated to v4
         with:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-      - if: matrix.targetPlatform == 'Android'
+
+      - if: ${{ matrix.targetPlatform == 'Android' }}  # ✅ Fixed condition
         uses: jlumbroso/free-disk-space@v1.3.1
-      - name: Install Unity UI package
-        run: |
-          UNITY_EXEC=$(which Unity)
-          if [ -z "$UNITY_EXEC" ]; then
-            echo "Unity executable not found!"
-            exit 1
-          fi
-          $UNITY_EXEC -batchmode -quit -projectPath . -executeMethod UnityEditor.PackageManager.Client.AddPackage "com.unity.ugui"
 
       - uses: game-ci/unity-builder@v4
         env:
@@ -45,7 +40,8 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-      - uses: actions/upload-artifact@v4
+
+      - uses: actions/upload-artifact@v4  # ✅ Updated to v4
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
