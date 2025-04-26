@@ -31,7 +31,13 @@ jobs:
         uses: jlumbroso/free-disk-space@v1.3.1
       - name: Install Unity UI package
         run: |
-          /opt/Unity/Editor/Unity -batchmode -quit -projectPath . -executeMethod UnityEditor.PackageManager.Client.AddPackage "com.unity.ugui"
+          UNITY_EXEC=$(which Unity)
+          if [ -z "$UNITY_EXEC" ]; then
+            echo "Unity executable not found!"
+            exit 1
+          fi
+          $UNITY_EXEC -batchmode -quit -projectPath . -executeMethod UnityEditor.PackageManager.Client.AddPackage "com.unity.ugui"
+
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
