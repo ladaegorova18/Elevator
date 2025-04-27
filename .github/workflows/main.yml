@@ -9,7 +9,53 @@ on:
     branches:
       - main  # Only trigger on pull request to the 'main' branch
 
-jobs:
+jobs:     
+  testAllModes:
+      name: Test in ${{ matrix.testMode }}
+      runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          projectPath:
+            - .
+          testMode:
+            - playmode
+            - editmode
+            - standalone
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            lfs: true
+        - uses: actions/cache@v4 # ✅ Updated to v4
+          with:
+            path: ${{ matrix.projectPath }}/Library
+            key: Library-${{ matrix.projectPath }}
+            restore-keys: |
+              Library-
+        - uses: game-ci/unity-test-runner@v4
+          id: tests
+          env:
+            UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+            UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+            UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          with:
+            projectPath: ${{ matrix.projectPath }}
+            testMode: ${{ matrix.testMode }}
+            artifactsPath: ${{ matrix.testMode }}-artifacts
+            githubToken: ${{ secrets.GITHUB_TOKEN }}
+            checkName: ${{ matrix.testMode }} Test Results
+            coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
+        - uses: actions/upload-artifact@v4 # ✅ Updated to v4
+          if: always()
+          with:
+            name: Test results for ${{ matrix.testMode }}
+            path: ${{ steps.tests.outputs.artifactsPath }}
+        - uses: actions/upload-artifact@v4 # ✅ Updated to v4
+          if: always()
+          with:
+            name: Coverage results for ${{ matrix.testMode }}
+            path: ${{ steps.tests.outputs.coveragePath }}  
+          
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
@@ -18,6 +64,12 @@ jobs:
       matrix:
         targetPlatform:
           - Android # Build an Android .apk standalone app.
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows # Build a Windows standalone.
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+          - iOS # Build an iOS player.
+          - WebGL # WebGL.
     steps:
       - uses: actions/checkout@v4
         with:
