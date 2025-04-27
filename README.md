@@ -2,8 +2,9 @@
 A mobile game about an elevator made with the Unity engine.
 
 ![license](https://img.shields.io/badge/License-Apache_2.0-blueviolet)
-![release](https://github.com/mob-sakai/unity-activate/workflows/release/badge.svg)
+[![Build](https://github.com/ladaegorova18/Elevator/actions/workflows/main.yml/badge.svg)](https://github.com/ladaegorova18/Elevator/actions/workflows/main.yml)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/ladaegorova18/Elevator)](https://github.com/ladaegorova18/Elevator/releases/latest)
 
 Once a quiet village, Kawaii Slimes now thrives as a bustling metropolis. 
 Towering buildings have sprung up, and elevators are essential for residents to reach their apartments. Help them to get home!
