@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -6,7 +7,7 @@ public class GameController : MonoBehaviour
 
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("ComixScene");
     }
 
     public void OnExitButtonClicked()
@@ -24,6 +25,16 @@ public class GameController : MonoBehaviour
 
     public void OnBackButtonClicked()
     {
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    public void OnNextButtonClicked()
+    {
+        var canvas = GameObject.FindGameObjectWithTag("canvas");
+        if (canvas != null)
+        {
+            var canvasImage = canvas.GetComponent<Image>();
+        }
+        SceneManager.LoadScene("ComixScene");
     }
 }
