@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
+    public event System.Action<float> OnFinishLevel;
+
     private Text counter;
 
     // Number of passengers that have entered the elevator
@@ -40,10 +42,13 @@ public class Counter : MonoBehaviour
     {
         entered = 0;
         lose = 0;
+        rided = 0;
     }
 
     public void FinishLevel() {
         Debug.Log("Level finished");
         passengerController.StopAllCoroutines();
+        var successRate = rided / (float)passengersCount;
+        OnFinishLevel?.Invoke(successRate);
     }
 }

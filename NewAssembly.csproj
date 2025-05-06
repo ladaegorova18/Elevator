@@ -73,7 +73,9 @@
     <Compile Include="Assets\Scripts\CreateClasses\Child.cs" />
     <Compile Include="Assets\Scripts\CreateClasses\PassengerController.cs" />
     <Compile Include="Assets\Scripts\CreateClasses\PeopleCreator.cs" />
+    <Compile Include="Assets\Scripts\TitleSceneController.cs" />
     <Compile Include="Assets\Scripts\CreateClasses\Passenger.cs" />
+    <Compile Include="Assets\Scripts\LevelCompleted.cs" />
     <Compile Include="Assets\Scripts\Restart.cs" />
     <Compile Include="Assets\Scripts\Counter.cs" />
     <Compile Include="Assets\Scripts\CreateClasses\Creator.cs" />

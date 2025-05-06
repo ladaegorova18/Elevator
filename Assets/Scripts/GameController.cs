@@ -1,27 +1,44 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject levelCompletePanel;
 
-    public void OnStartButtonClicked()
-    {
-        SceneManager.LoadScene("ComixScene");
-    }
+    private GameObject house;
+    private GameObject elevator;
+    private Counter counter;
 
-    public void OnExitButtonClicked()
+    private void Start()
     {
-        Application.Quit();
-        Debug.Log("Game is exiting...");
+        house = GameObject.FindGameObjectWithTag("house");
+        elevator = GameObject.FindGameObjectWithTag("elevator");
+        counter = GameObject.FindGameObjectWithTag("counter").GetComponent<Counter>();   
+        counter.OnFinishLevel += FinishLevel;
+        elevator.SetActive(true);
     }
 
     public void OnRestartButtonClicked()
     {
-        GameObject.FindGameObjectWithTag("house").GetComponent<PassengerController>().Restart();
-        GameObject.FindGameObjectWithTag("elevator").GetComponent<Elevator>().Clear();
-        GameObject.FindGameObjectWithTag("counter").GetComponent<Counter>().Clear();
+        levelCompletePanel.SetActive(false);
+        house.GetComponent<PassengerController>().Restart();
+        elevator.GetComponent<Elevator>().Clear();
+        counter.GetComponent<Counter>().Clear();
+        elevator.SetActive(true);
     }
 
     public void OnBackButtonClicked() => SceneManager.LoadScene("TitleScene");
+
+    public void FinishLevel(float successRate)
+    {
+        counter.OnFinishLevel -= FinishLevel;
+        
+        levelCompletePanel.SetActive(true);
+        levelCompletePanel.GetComponent<LevelCompleted>().SetResult(successRate);
+
+        house.GetComponent<PassengerController>().StopAllCoroutines();
+        elevator.SetActive(false);
+    }
 }

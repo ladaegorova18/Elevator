@@ -307,8 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274a7e1319da72a4cbba7594f7480051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleAudioSource: {fileID: 0}
-  levelAudioSource: {fileID: 0}
 --- !u!114 &486739743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,7 +993,7 @@ PrefabInstance:
     - target: {fileID: 7467871389416440205, guid: a9453f4020055644196493885066dfaa,
         type: 3}
       propertyPath: m_Name
-      value: GameController
+      value: TitleSceneController
       objectReference: {fileID: 0}
     - target: {fileID: 8853066407522458358, guid: a9453f4020055644196493885066dfaa,
         type: 3}
