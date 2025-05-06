@@ -26,15 +26,17 @@ public class Queue : MonoBehaviour
         Stabilize();
     }
 
-    public void Remove(int id) => 
+    public void Remove(int id) {
+        Debug.Log(passengers.ToString());
         passengers.Remove(passengers.Find(x => x.GetComponent<Passenger>().id == id));
+    }
 
     private void GetExited()
     {
         var exited = new List<GameObject>();
         foreach (var pass in passengers)
         {
-            if (pass.GetComponent<Passenger>().Enter)
+            if (pass != null && pass.GetComponent<Passenger>().Enter)
             {
                 exited.Add(pass);
             }
