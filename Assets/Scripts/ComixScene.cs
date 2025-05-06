@@ -10,6 +10,9 @@ public class ComixScene : MonoBehaviour
     [SerializeField]
     private Image comixPanel;
 
+    private int currentPage = 0;
+    private float timeToShow = 20f; 
+
     private void Start()
     {
         StartCoroutine(PlayComix());
@@ -17,12 +20,11 @@ public class ComixScene : MonoBehaviour
 
     private IEnumerator PlayComix()
     {
-        // Loop through each image in the comixImages array
-        foreach (var sprite in comixImages)
+        while (currentPage < comixImages.Length)
         {
-            comixPanel.sprite = sprite;
-            // Wait for 2 seconds before showing the next image
-            yield return new WaitForSeconds(20f);
+            NextPage();
+            // Wait for the specified time before showing the next image
+            yield return new WaitForSeconds(timeToShow);
         }
         
         // Load the next scene after the comix is done playing
@@ -32,8 +34,27 @@ public class ComixScene : MonoBehaviour
     public void OnSkipButtonClicked()
     {
         Debug.Log("Comix skipped!");
-        // Skip the comix and load the next scene immediately
-        StopAllCoroutines();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        if (currentPage < comixImages.Length) {
+            NextPage();
+        }
+        else
+        {
+            Debug.Log("Comix finished, loading MainScene.");
+            StopAllCoroutines();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        }
     }
+
+    private void NextPage() 
+    {
+        Debug.Log($"Current page: {currentPage}");
+        comixPanel.sprite = comixImages[currentPage];
+        currentPage++;
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
 }
