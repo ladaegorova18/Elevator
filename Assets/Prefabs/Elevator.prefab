@@ -1543,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: 7470395397071682203, guid: 5eb4faf7729d059408358aadfe75945f,
         type: 3}
       propertyPath: m_Name
-      value: (Prb)MirrorLight (2)
+      value: Light2
       objectReference: {fileID: 0}
     - target: {fileID: 7847519757549690913, guid: 5eb4faf7729d059408358aadfe75945f,
         type: 3}
@@ -1642,7 +1642,7 @@ PrefabInstance:
     - target: {fileID: 7470395397071682203, guid: 5eb4faf7729d059408358aadfe75945f,
         type: 3}
       propertyPath: m_Name
-      value: (Prb)MirrorLight
+      value: Light1
       objectReference: {fileID: 0}
     - target: {fileID: 7847519757549690913, guid: 5eb4faf7729d059408358aadfe75945f,
         type: 3}
@@ -1741,7 +1741,7 @@ PrefabInstance:
     - target: {fileID: 7470395397071682203, guid: 5eb4faf7729d059408358aadfe75945f,
         type: 3}
       propertyPath: m_Name
-      value: (Prb)MirrorLight (1)
+      value: Light3
       objectReference: {fileID: 0}
     - target: {fileID: 7847519757549690913, guid: 5eb4faf7729d059408358aadfe75945f,
         type: 3}

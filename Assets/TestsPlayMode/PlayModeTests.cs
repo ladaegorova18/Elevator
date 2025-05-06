@@ -11,15 +11,15 @@ public class PlayModeTests
     public void Setup()
     {
         Debug.Log("Setup started");
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("TitleScene");
     }
 
     [UnityTest]
-    public IEnumerator TitleScreenIsOpenedTest()
+    public IEnumerator TitleSceneIsOpenedTest()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("TitleScreen is opened test started");
-        Assert.IsTrue(SceneManager.GetActiveScene().name == "TitleScreen", "TitleScreen is not opened correctly.");
+        Debug.Log("TitleScene is opened test started");
+        Assert.IsTrue(SceneManager.GetActiveScene().name == "TitleScene", "TitleScene is not opened correctly.");
         yield return null;
     }
 
@@ -39,7 +39,7 @@ public class PlayModeTests
         yield return new WaitForSeconds(1f);
         Debug.Log(SceneManager.GetActiveScene().name);
 
-        Assert.IsTrue(SceneManager.GetActiveScene().name == "MainScene", "MainScene was not opened correctly.");
+        Assert.IsTrue(SceneManager.GetActiveScene().name == "ComixScene", "ComixScene was not opened correctly.");
         yield return null;
     }
 }

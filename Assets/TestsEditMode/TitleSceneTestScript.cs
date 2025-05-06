@@ -11,7 +11,7 @@ public class TitleSceneTestScript
     {
         // This method is called before each test
         Debug.Log("Setup started");
-        EditorSceneManager.OpenScene("Assets/Scenes/TitleScreen.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/TitleScene.unity");
     }
 
     [Test]
@@ -19,6 +19,6 @@ public class TitleSceneTestScript
     {
         Debug.Log("Scene is opened test started");
         var scene = EditorSceneManager.GetActiveScene().name;
-        Assert.AreEqual("TitleScreen", scene, "Scene is not opened correctly.");
+        Assert.AreEqual("TitleScene", scene, "Scene is not opened correctly.");
     }
 }
