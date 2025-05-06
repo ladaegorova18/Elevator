@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 33998fdabab7d1f46a8a09ed293fe03b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b917bd4aaeeb42043a1910ab5590b924, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comixImages:
-  - {fileID: 21300000, guid: 33998fdabab7d1f46a8a09ed293fe03b, type: 3}
-  - {fileID: 21300000, guid: e08c424f3d83f954a8968d0e61b062ae, type: 3}
+  - {fileID: 21300000, guid: b917bd4aaeeb42043a1910ab5590b924, type: 3}
+  - {fileID: 21300000, guid: a1fed6f74a324244c9ec2de4ddcbfb48, type: 3}
   comixPanel: {fileID: 486739743}
 --- !u!4 &548888991
 Transform:
@@ -425,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 366, y: 131}
+  m_AnchoredPosition: {x: 385, y: 204}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416016300
