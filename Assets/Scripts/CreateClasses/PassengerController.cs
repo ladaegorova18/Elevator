@@ -116,14 +116,6 @@ public class PassengerController : MonoBehaviour
         var person = peopleCreator.GetPassenger(floorCount, personID, startFloor);
 
         Debug.Log(" passengersOnFloors: " + passengersOnFloors.Length + " StartFloor: " + person.StartFloor);
-        var limit = passengersOnFloors[person.StartFloor];
-
-        //while (limit < limitOnFloor)
-        //{
-        //    Debug.Log("A");
-        //    person = peopleCreator.GetPassenger(floorCount, personID, startFloor); //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        //    limit = passengersOnFloors[person.startFloor];
-        //}
         return person;
     }
 

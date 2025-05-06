@@ -5,22 +5,34 @@ public class Counter : MonoBehaviour
 {
     private Text counter;
 
-    private int entered;
-    private int lose;
+    // Number of passengers that have entered the elevator
+    private int entered = 0;
+    // Number of passengers that have lost
+    private int lose = 0;
+    // Number of passengers that have left the elevator
+    private int rided;
     private int passengersCount;
+    private PassengerController passengerController;
 
     // Start is called before the first frame update
     void Start()
     {
         counter = GetComponent<Text>();
-        passengersCount = GameObject.FindGameObjectWithTag("house").GetComponent<PassengerController>().passengersCount;
-        entered = 0;
-        lose = 0;
+        passengerController = GameObject.FindGameObjectWithTag("house").GetComponent<PassengerController>();
+        passengersCount = passengerController.passengersCount;
     }
 
-    private void Update() => counter.text = $"{entered}/{passengersCount}  \nLost: {lose}";
+    private void Update() {
+        counter.text = $"{rided}/{passengersCount}  \nLost: {lose}";
+        if (rided + lose >= passengersCount)
+        {
+            FinishLevel();
+        }
+    }
 
     public void AddPassenger() => ++entered;
+
+    public void RidePasssenger() => ++rided;
 
     public void LosePassenger() => ++lose;
 
@@ -28,5 +40,10 @@ public class Counter : MonoBehaviour
     {
         entered = 0;
         lose = 0;
+    }
+
+    public void FinishLevel() {
+        Debug.Log("Level finished");
+        passengerController.StopAllCoroutines();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Passenger : MonoBehaviour
@@ -34,7 +33,6 @@ public class Passenger : MonoBehaviour
 
     public bool Enter { get; set; } = false;
     private bool exit;
-    private System.Random rnd = new System.Random();
     private Counter counter;
 
     private void Start()
@@ -124,23 +122,24 @@ public class Passenger : MonoBehaviour
 
     private void DestroyFromFloor()
     {
+        var house = GameObject.FindGameObjectWithTag("house");
         // Debug.Log("Destroy from floor: " + " " + StartFloor);
-        if (GameObject.FindGameObjectWithTag("house") == null)
+        if (house == null)
         {
             Debug.Log("House is null: " + StartFloor);
             return;
         }
-        else if (GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor) == null)
+        else if (house.transform.GetChild(StartFloor) == null)
         {
             Debug.Log("House child is null: " + StartFloor);
             return;
         }
-        else if (GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor).GetComponent<Queue>() == null)
+        else if (house.transform.GetChild(StartFloor).GetComponent<Queue>() == null)
         {
             Debug.Log("Queue is null: " + StartFloor);
             return;
         }
-        GameObject.FindGameObjectWithTag("house").transform.GetChild(StartFloor).GetComponent<Queue>().Remove(id);
+        house.transform.GetChild(StartFloor).GetComponent<Queue>().Remove(id);
         Destroy(gameObject);
     }
 
@@ -161,21 +160,17 @@ public class Passenger : MonoBehaviour
         // Rotate();
         MoveLeft = true;
         exit = true;
+        counter.RidePasssenger();
     }
 
     void OnAnimatorMove()
     {
-        // apply root motion to AI
-        var position = anim.rootPosition;
-
         if (MoveRight)
             transform.position += Vector3.right / 20;
 
         if (MoveLeft)
             transform.position += Vector3.left / 20;
     }
-
-    private void Rotate() => transform.Rotate(0, 180, 0);
 
     private void UpdateTimerImage()
     {
