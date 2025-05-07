@@ -16,6 +16,9 @@ public class Passenger : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
+    private ParticleSystem emitter;
+
+    [SerializeField]
     public int StartFloor { get; set; }
 
     public int FinishFloor { get; set; }
@@ -160,6 +163,8 @@ public class Passenger : MonoBehaviour
         // Rotate();
         MoveLeft = true;
         exit = true;
+        Debug.Log("PLAY: " + StartFloor);
+        emitter?.Play();
         counter.RidePasssenger();
     }
 
